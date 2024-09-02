@@ -17,9 +17,14 @@ ratingButtons.forEach((button) => {
 });
 
 // Function to handle submit button click
-submitButton.addEventListener("click", () => {
-  // Change submit button style
-  submitButton.classList.add("submitted");
-  // Show the thank you box and hide the rating box
-  thankYouBox.classList.remove("hidden");
+submitButton.addEventListener("click", (event) => {
+  if (ratingSpan.textContent === "") {
+    event.preventDefault();
+    alert("Please select a rating before submitting.");
+  } else {
+    // Change submit button style
+    submitButton.classList.add("submitted");
+    // Show the thank you box and hide the rating box
+    thankYouBox.classList.remove("hidden");
+  }
 });
