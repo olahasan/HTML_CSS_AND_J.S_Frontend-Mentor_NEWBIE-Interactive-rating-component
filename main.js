@@ -1,36 +1,25 @@
-let num = document.querySelectorAll(".b");
-let Submit = document.getElementById("bb");
-let box_1 = document.getElementById("one");
-let box_2 = document.getElementById("two");
-let s = document.getElementsByTagName("span");
-// console.log(num);
-// console.log(Submit);
-// console.log(box_1);
-// console.log(box_2);
-// console.log(s);
+const ratingButtons = document.querySelectorAll(".rating-button");
+const submitButton = document.getElementById("submit-button");
+const ratingBox = document.getElementById("one");
+const thankYouBox = document.getElementById("two");
+const ratingSpan = document.querySelector(".span span");
 
-num.forEach(function (ele) {
+// Function to handle rating button click
+ratingButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    // Remove active class from all buttons
+    ratingButtons.forEach((btn) => btn.classList.remove("active"));
+    // Add active class to the clicked button
+    button.classList.add("active");
+    // Update the rating span with the selected rating
+    ratingSpan.textContent = button.textContent;
+  });
+});
 
-    ele.onclick = function () {
-        //remove active class from all elements
-        num.forEach(function (e) {
-            e.classList.remove("active");
-
-        })
-        this.classList.add("active");
-
-        // console.log(this.innerHTML);
-        s[0].innerHTML = this.innerHTML;
-
-    }
-
-})
-
-Submit.onclick = function () {
-    Submit.style.backgroundColor = "white";
-    Submit.style.color = "#fc7614";
-    box_2.classList.remove("hidden");
-    // s.innerHTML = this.innerHTML;
-
-}
-
+// Function to handle submit button click
+submitButton.addEventListener("click", () => {
+  // Change submit button style
+  submitButton.classList.add("submitted");
+  // Show the thank you box and hide the rating box
+  thankYouBox.classList.remove("hidden");
+});
